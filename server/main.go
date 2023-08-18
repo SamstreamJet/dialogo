@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"os"
 	"time"
-
+    
 	"github.com/joho/godotenv"
 )
 
@@ -39,6 +39,9 @@ func main() {
 		log.Fatal("Error loading .env file\n")
 	}
 	port := os.Getenv("port")
+
+    db := 
+    
 
 	mux := http.NewServeMux()
 	mux.HandleFunc("/login", login)

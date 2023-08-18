@@ -1,4 +1,4 @@
-module howdy.com/api
+module github.com/SamstreamJet/dialogo
 
 go 1.21.0
 

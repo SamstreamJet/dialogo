@@ -7,13 +7,10 @@ import (
 	"net/http"
 	"os"
 	"time"
-    
+
+	"github.com/SamstreamJet/dialogo/server/db"
 	"github.com/joho/godotenv"
 )
-
-type Controller interface {
-	
-}
 
 func login(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/login" || r.Method != "POST" {
@@ -34,16 +31,19 @@ func register(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-    errEnv := godotenv.Load("../.env")
-	if errEnv != nil {
-		log.Fatal("Error loading .env file\n")
+    var err error
+ 
+    err = godotenv.Load(".env")
+	if err != nil {
+		log.Fatal("Error while loading env variables\n")
 	}
 	port := os.Getenv("port")
-
-    db := 
     
+    // Connecting to db and testing connection
+    connector.Connect()
+    connector.Ping()
 
-	mux := http.NewServeMux()
+    mux := http.NewServeMux()
 	mux.HandleFunc("/login", login)
 	mux.HandleFunc("/register", register)
 
